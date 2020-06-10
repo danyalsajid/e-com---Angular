@@ -1,1 +1,52 @@
-<p>admin works!</p>
+<div class="sidebar bg-light border-right px-2 pt-3">
+    <div *ngFor="let sideMenuOption of sideMenuOptions">
+        <a class="p-2 px-1 my-2 rounded pointer" [ngClass]="{'active': sideMenuOption.active}" (click)="onSelectMenu(sideMenuOption.name)">
+            <i class="fa" [ngClass]="[sideMenuOption.icon]"></i>
+            {{sideMenuOption.name}}</a>
+    </div>
+</div>
+
+<div class="header pt-3 bg-light border-bottom">
+    <div class="container px-0">
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm">
+                <h3 class="text-secondary">{{selectedSideMenuOption}}</h3>
+            </div>
+            <div class="col-sm pt-1 pr-3">               
+                <button class="btn btn-secondary pull-right ml-2 mb-2"
+                    (click)="logout()">
+                    <i class="fa fa-sign-out"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="content">
+    <app-add-home *ngIf="selectedSideMenuOption === 'Add Home Page'">
+    </app-add-home>
+
+    <app-view-home *ngIf="selectedSideMenuOption === 'View/Edit Home Page'">
+    </app-view-home>
+
+    <app-add-category *ngIf="selectedSideMenuOption === 'Add Category'">
+    </app-add-category>
+
+    <app-view-category *ngIf="selectedSideMenuOption === 'View/Edit Category'">
+    </app-view-category>
+
+    <app-add-product *ngIf="selectedSideMenuOption === 'Add Product'">
+    </app-add-product>
+
+    <app-view-product *ngIf="selectedSideMenuOption === 'View/Edit Product'">
+    </app-view-product>
+
+    <app-view-order *ngIf="selectedSideMenuOption === 'View/Edit Order'">
+    </app-view-order>
+
+    <app-view-complaint *ngIf="selectedSideMenuOption === 'View/Edit Complaint'">
+    </app-view-complaint>
+</div>
