@@ -1,0 +1,21 @@
+<form (ngSubmit)="directSearch();">
+<div class="input-group w-25">
+    <input
+        [(ngModel)]="searchTerm" 
+        name="search"
+        type="text" 
+        class="form-control" 
+        placeholder="{{placeholder}}"
+        (input)="search($event)"
+        >
+
+        <div class="input-group-append">
+            <button 
+            class="btn btn-outline-secondary" 
+            type="button"
+            (click)="onSearch()">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
