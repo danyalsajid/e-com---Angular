@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AdminModule } from '../app/admin/admin.module';
 import { HomeModule } from './home/home.module';
 import { ProductModule } from './product/product.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProductModule } from './product/product.module';
     AppRoutingModule,
     AdminModule,
     HomeModule,
-    ProductModule
+    ProductModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
