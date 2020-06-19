@@ -1,0 +1,16 @@
+.percent-box {
+    width: 80px;
+    position: relative;
+    left: -30px; 
+    background-color: #bf2bc7;
+}
+.percent-triangle {
+    width: 80px;
+    height: 25px;
+    z-index: -1;
+    transform: rotate(45deg);
+    position: relative;
+    left: -32px;
+    top: 7px;
+    background-color: #8d8d8d;
+}

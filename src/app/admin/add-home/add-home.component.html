@@ -1,1 +1,60 @@
-<p>add-home works!</p>
+<div class="py-2 px-3">
+    <!-- Advertisment -->
+    <div class="form-row">
+        <div class="form-group col-md-8 pr-5">
+            <label>Advertisement Text</label>
+            <textarea [formControl]="adTextController" cols="20" rows="3" value="" class="form-control" maxlength="250"
+                placeholder="Enter Advertisement Text...">
+            </textarea>
+            <small class="pull-right">
+                {{250-adTextController?.value?.length}} / 250
+            </small>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12 pr-5">
+            <label for="file">Advertisement Image</label> <br>
+            <input class="choose-file" type="file" [formControl]="adFileController"
+                (change)="handleAdFileInput($event.target.files)">
+        </div>
+    </div>
+    <div class="form-row text-center">
+        <p class="text-danger mx-auto col-md-12" *ngIf="adError">Error! Invalid Values. Please check again.</p>
+        <p class="text-success mx-auto col-md-12" *ngIf="adSuccess">Advertisement added successfully.</p>
+        <div class="form-group col-md-12 text-center">
+            <button class="btn btn-custom mx-2" (click)="addAdvertisement()">Add word</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Information Center -->
+    <div class="form-row">
+        <div class="form-group col-md-8 pr-5">
+            <label>Information Center Text</label>
+            <textarea [formControl]="infoTextController" cols="20" rows="3" value="" class="form-control"
+                maxlength="250" placeholder="Enter Information Center Text...">
+            </textarea>
+            <small class="pull-right">
+                {{250-infoTextController?.value?.length}} / 250
+            </small>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12 pr-5">
+            <label for="file">Information Center Image</label> <br>
+            <input class="choose-file" type="file" [formControl]="infoFileController"
+                (change)="handleInfoFileInput($event.target.files)">
+        </div>
+    </div>
+    <div class="form-row text-center">
+        <p class="text-danger mx-auto col-md-12" *ngIf="infoError">Error! Invalid Values. Please check again.</p>
+        <p class="text-success mx-auto col-md-12" *ngIf="infoSuccess">Information Center added successfully.</p>
+        <div class="form-group col-md-12 text-center">
+            <button class="btn btn-custom mx-2">Add word</button>
+        </div>
+    </div>
+
+
+
+</div>

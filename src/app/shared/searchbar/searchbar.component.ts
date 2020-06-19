@@ -10,9 +10,10 @@ import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 })
 export class SearchbarComponent implements OnInit, OnDestroy {
 
-  searchTerm: string = ""
+  searchTerm: string = "";
 
-  @Input() placeholder: string = "Search..."
+  @Input() widthClass: string = "";
+  @Input() placeholder: string = "Search...";
   @Output() searchEvent = new EventEmitter<string>();
 
   searchSubject = new Subject<string>();

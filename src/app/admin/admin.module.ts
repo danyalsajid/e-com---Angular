@@ -12,6 +12,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
 import { ViewComplaintComponent } from './view-complaint/view-complaint.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { ViewComplaintComponent } from './view-complaint/view-complaint.componen
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class AdminModule { }

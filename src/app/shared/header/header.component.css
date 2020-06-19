@@ -1,0 +1,45 @@
+@media screen and (max-width: 600px) {
+    .top-nav {
+        display: block!important; 
+        text-align: center;
+        padding: 10%;
+    }
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+.element {
+    display: block;
+    width: 100%;
+}
+
+.element:hover {
+    background: #fafafa;
+}
+
+.dropdown-element {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    background: #ffffff;
+    z-index: 9999;
+    display: inline-block;
+    width: 250px;
+}
+
+.sub-dropdown-element {
+    position: absolute;
+    display: none;
+    background: #ffffff;
+    z-index: 9999;
+    left: 250px;
+}
+
+.element:hover .sub-dropdown-element {
+	display: inline-block;
+
+}

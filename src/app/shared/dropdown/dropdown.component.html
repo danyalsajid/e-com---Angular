@@ -1,9 +1,11 @@
 <div class="dropdown-btn" (clickOutside)="onClickedOutside($event)">
 <div class="dropdown-btn">
-    <button class="btn btn-light border" (click)="showDropDown=!showDropDown">
+    <div class="btn" 
+    [ngClass]="[noBorder === true? '' : 'border',noBackground === true? '' : 'btn-light']"
+    (click)="showDropDown=!showDropDown">
         {{selectedOption}}
         <i class="fa fa-caret-down"></i>
-    </button>
+    </div>
 
     <div [ngClass]="{'hidden': !showDropDown}">
         <div class="border rounded p-2 pointer dropdown-element" style="display: inline-block;" [ngStyle]="{'width': listWidth}">

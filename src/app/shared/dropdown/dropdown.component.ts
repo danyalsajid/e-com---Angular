@@ -8,9 +8,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class DropdownComponent implements OnInit {
   showDropDown: boolean = false;
 
-  @Input() selectedOption: string = "Select"
-  @Input() options: string[] = [];
-  @Input() listWidth: string = "";
+  @Input() selectedOption = "Select"
+  @Input() options = [];
+  @Input() listWidth = "";
+  @Input() noBorder  = false;
+  @Input() noBackground  = true;
 
   @Output() selectedOptionEvent = new EventEmitter<string>();
 

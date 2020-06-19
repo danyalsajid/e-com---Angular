@@ -1,5 +1,5 @@
 <form (ngSubmit)="directSearch();">
-<div class="input-group w-25">
+<div class="input-group" [ngClass]="widthClass !== '' ? widthClass : 'w-25'">
     <input
         [(ngModel)]="searchTerm" 
         name="search"
