@@ -4,14 +4,14 @@
         [(ngModel)]="searchTerm" 
         name="search"
         type="text" 
-        class="form-control" 
+        class="form-control rounded-0" 
         placeholder="{{placeholder}}"
         (input)="search($event)"
         >
 
         <div class="input-group-append">
             <button 
-            class="btn btn-outline-secondary" 
+            class="btn btn-outline-secondary rounded-0" 
             type="button"
             (click)="onSearch()">
                 <i class="fa fa-search"></i>
