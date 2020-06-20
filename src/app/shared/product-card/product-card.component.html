@@ -1,4 +1,4 @@
-<div class="col-md-3 my-3">
+<div class="col-md-3 my-3 pointer" (click)="selectProduct()">
     <div class="card rounded-0" style="width: 15rem; z-index: 1;">
         <div class="bg-light">
             <img class="card-img-top" [src]="product.imgUrl" height="200px" style="object-fit: contain;">
@@ -10,7 +10,8 @@
             <div class="text-light pl-3 shadow percent-triangle" *ngIf="product.percentOff > 0">
             </div>
             <button class="btn btn-sm btn-custom pull-right rounded-0"
-                [ngClass]="{'top-30': product.percentOff > 0, 'top-60': product.percentOff === 0}">
+                [ngClass]="{'top-30': product.percentOff > 0, 'top-60': product.percentOff === 0}"
+                (click)="addToCart($event);">
                 Add to Cart
             </button>
         </div>
@@ -19,7 +20,8 @@
             <small class="py-0 my-0">{{product.category}}</small>
             <p>
                 <s class="text-secondary strike" *ngIf="product.percentOff > 0">
-                    Rs. {{product.price}}</s>
+                    <small>Rs. {{product.price}}</small>
+                </s>
                 Rs. {{finalPrice}}</p>
         </div>
     </div>
