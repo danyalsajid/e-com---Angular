@@ -1,13 +1,13 @@
 <!-- Top Image -->
-<img src="../../assets/electronics-banner-02.jpg" class="img-fluid">
+<img src="../../assets/electronics-banner-02.jpg" class="img-fluid" style="position: relative; top: -30px;">
 
 <br><br><br>
 <!-- Information Center  -->
 <div class="bg-white p-5">
     <h2>Information Center</h2>
     <br>
-    <div class="container">
-        <img src="../../assets/electronics-banner-02.jpg" class="info-image">
+    <div class="container bg-light">
+        <img src="../../assets/electronics-banner-02.jpg" height="200px" style="object-fit: contain; width: 100%;">
     </div>
 </div>
 
@@ -21,16 +21,7 @@
     </div>
     <br>
     <div class="row px-5 pb-5">
-        <app-product-card>
-        </app-product-card>
-
-        <app-product-card>
-        </app-product-card>
-
-        <app-product-card>
-        </app-product-card>
-
-        <app-product-card>
+        <app-product-card *ngFor="let product of products" [product]="product">
         </app-product-card>
     </div>
 

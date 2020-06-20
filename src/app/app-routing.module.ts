@@ -8,6 +8,9 @@ import { HowToOrderComponent } from './home/how-to-order/how-to-order.component'
 import { GiftCouponsComponent } from './home/gift-coupons/gift-coupons.component';
 import { ComplaintBoxComponent } from './home/complaint-box/complaint-box.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { CartComponent } from './product/cart/cart.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -20,7 +23,13 @@ const routes: Routes = [
       { path: 'complaint-box', component: ComplaintBoxComponent },
     ]
   },
-  { path: 'product', component: ProductComponent },
+  {
+    path: 'product', component: ProductComponent, children: [
+      { path: 'product-list', component: ProductListComponent },
+      { path: 'product-detail', component: ProductDetailComponent },
+      { path: 'cart', component: CartComponent },
+    ]
+  },
 ];
 
 @NgModule({

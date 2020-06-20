@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,10 +14,10 @@ export class HeaderComponent implements OnInit {
   dropDownList = [
     {
       name: "Product Name Name",
-      subDropdownItem : [
-        {name: "Sub Product Name"},
-        {name: "Sub Product "},
-        {name: "Sub Product Name"},
+      subDropdownItem: [
+        { name: "Sub Product Name" },
+        { name: "Sub Product" },
+        { name: "Sub Product Name" },
       ]
     },
     {
@@ -24,14 +25,14 @@ export class HeaderComponent implements OnInit {
     },
     {
       name: "Product Name",
-      subDropdownItem : [
-        {name: "Sub Product Name"},
-        {name: "Sub Product Name"},
-        {name: "Sub Product Name"},
+      subDropdownItem: [
+        { name: "Sub Product Name" },
+        { name: "Sub Product Name" },
+        { name: "Sub Product Name" },
       ]
     },
   ]
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,6 +43,14 @@ export class HeaderComponent implements OnInit {
 
   onClickedOutside(e: Event) {
     this.showDropdown = false;
+  }
+
+  selectItem(item) {
+    if (item["subDropdownItem"]) {
+      return;
+    } else {
+      this.router.navigate(['/product/product-list']);
+    }
   }
 
 }

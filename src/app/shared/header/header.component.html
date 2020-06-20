@@ -1,4 +1,4 @@
-<div class="shadow-sm">
+<div class="shadow-sm" style="z-index: 9999;">
     <div class="top-nav bg-light text-dark py-3 d-flex justify-content-around">
         <div class="nav-item logo pointer" [routerLink]="['/home']">
             <a [routerLink]="['/home']">
@@ -11,7 +11,9 @@
         </div>
 
         <div class="nav-item pt-2">
-            <span class="text-secondary pointer"><i class="fa fa-shopping-cart"></i> Cart</span>
+            <span class="text-secondary pointer">
+                <a [routerLink]="['/product/cart']"><i class="fa fa-shopping-cart"></i> Cart</a>
+            </span>
             | <span class="text-secondary pointer"><i class="fa fa-user-circle-o"></i> User</span>
         </div>
     </div>
@@ -23,11 +25,11 @@
             (clickOutside)="onClickedOutside($event)">
 
             <div class="element py-2 border-bottom" *ngFor="let item of dropDownList">
-                <span class="pr-5">{{item.name}}</span>
+                <span class="pr-5" (click)="selectItem(item)">{{item.name}}</span>
                 <i class="fa fa-caret-right pull-right mr-2" *ngIf="item.subDropdownItem"></i>
 
                 <div class="shadow-sm p-2 pointer sub-dropdown-element w-100" *ngIf="item.subDropdownItem">
-                    <div class="element p-1 border-bottom" *ngFor="let subItem of item.subDropdownItem">{{subItem.name}}
+                    <div class="element p-1 border-bottom" *ngFor="let subItem of item.subDropdownItem" (click)="selectItem(subItem)">{{subItem.name}}
                     </div>
                 </div>
 

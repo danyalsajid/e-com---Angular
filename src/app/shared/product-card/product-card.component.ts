@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductData } from '../models/productData';
 
 @Component({
   selector: 'app-product-card',
@@ -7,16 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
-  productCardData = {
-    name: "Product Name",
-    category: "Category",
-    percentOff: 30,
-    price: 300,
-    offPrice: 270,
+  finalPrice = 0;
+  @Input() product: ProductData = {
+    name: "",
+    category: "",
+    percentOff: 0,
+    price: 0,
+    imgUrl: "",
   }
   constructor() { }
 
   ngOnInit(): void {
+    if (this.product.percentOff > 0) {
+      this.finalPrice = Math.ceil(this.product.price - (this.product.price / 100) * this.product.percentOff);
+    } else {
+      this.finalPrice = this.product.price;
+    }
   }
 
 }
