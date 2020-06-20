@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
+  productCardData = {
+    name: "Product Name",
+    category: "Category",
+    percentOff: 30,
+    price: 300,
+    offPrice: 270,
+  }
   constructor() { }
 
   ngOnInit(): void {

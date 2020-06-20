@@ -7,12 +7,14 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { SharedRoutingModule } from './shared-routing.module';
 
 
 @NgModule({
   declarations: [DropdownComponent, SearchbarComponent, HeaderComponent, FooterComponent, ProductCardComponent],
   imports: [
     CommonModule,
+    SharedRoutingModule,
     FormsModule
   ],
   exports: [

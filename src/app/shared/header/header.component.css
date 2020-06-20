@@ -11,6 +11,18 @@
     font-weight: bold;
 }
 
+/* anchor tag style  */
+a:link {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+/* top drop down  */
 
 .element {
     display: block;
@@ -43,3 +55,4 @@
 	display: inline-block;
 
 }
+

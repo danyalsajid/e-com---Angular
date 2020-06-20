@@ -1,6 +1,10 @@
 <div class="shadow-sm">
     <div class="top-nav bg-light text-dark py-3 d-flex justify-content-around">
-        <div class="nav-item logo pointer">e-<span style="color:#dc32e6;">Godham</span></div>
+        <div class="nav-item logo pointer" [routerLink]="['/home']">
+            <a [routerLink]="['/home']">
+                e-<span style="color:#dc32e6;">Godham</span>
+            </a>
+        </div>
 
         <div class="nav-item">
             <app-searchbar [widthClass]="'w-100'"></app-searchbar>
@@ -15,24 +19,31 @@
     <div class="d-flex justify-content-center py-2 bg-white">
         <div class="px-4 pointer" (click)="onShowDropdown()">Categories <i class="fa fa-caret-down"></i></div>
 
-            <div class="shadow-sm p-2 pointer dropdown-element" *ngIf="showDropdown" (clickOutside)="onClickedOutside($event)">
+        <div class="shadow-sm p-2 pointer dropdown-element" *ngIf="showDropdown"
+            (clickOutside)="onClickedOutside($event)">
 
-                <div class="element py-2 border-bottom" *ngFor="let item of dropDownList">
-                    <span class="pr-5">{{item.name}}</span>
-                    <i class="fa fa-caret-right pull-right mr-2" *ngIf="item.subDropdownItem"></i>
+            <div class="element py-2 border-bottom" *ngFor="let item of dropDownList">
+                <span class="pr-5">{{item.name}}</span>
+                <i class="fa fa-caret-right pull-right mr-2" *ngIf="item.subDropdownItem"></i>
 
-                    <div class="shadow-sm p-2 pointer sub-dropdown-element w-100" *ngIf="item.subDropdownItem">
-                        <div class="element p-1 border-bottom" *ngFor="let subItem of item.subDropdownItem">{{subItem.name}}</div>
+                <div class="shadow-sm p-2 pointer sub-dropdown-element w-100" *ngIf="item.subDropdownItem">
+                    <div class="element p-1 border-bottom" *ngFor="let subItem of item.subDropdownItem">{{subItem.name}}
                     </div>
-
                 </div>
 
             </div>
 
-        <div class="px-4 pointer">How to Order</div>
-        <div class="px-4 pointer">Customer Reviews</div>
-        <div class="px-4 pointer">Gift Coupons</div>
-        <div class="px-4 pointer">Complaint Box</div>
+        </div>
+
+        <div class="mx-4 pointer">
+            <a [routerLink]="['/home/how-to-order']" routerLinkActive="border-bottom" class="pb-1">How to Order</a>
+        </div>
+        <div class="mx-4 pointer">
+            <a [routerLink]="['/home/gift-coupons']" routerLinkActive="border-bottom" class="pb-1">Gift Coupons</a>
+        </div>
+        <div class="mx-4 pointer">
+            <a [routerLink]="['/home/complaint-box']" routerLinkActive="border-bottom" class="pb-1">Complaint Box</a>
+        </div>
     </div>
 </div>
 <br>
