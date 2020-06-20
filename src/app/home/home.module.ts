@@ -8,10 +8,12 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HowToOrderComponent } from './how-to-order/how-to-order.component';
 import { GiftCouponsComponent } from './gift-coupons/gift-coupons.component';
 import { ComplaintBoxComponent } from './complaint-box/complaint-box.component';
+import { AboutComponent } from './about/about.component';
+import { WarrentyComponent } from './warrenty/warrenty.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, HomePageComponent, HowToOrderComponent, GiftCouponsComponent, ComplaintBoxComponent],
+  declarations: [HomeComponent, HomePageComponent, HowToOrderComponent, GiftCouponsComponent, ComplaintBoxComponent, AboutComponent, WarrentyComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

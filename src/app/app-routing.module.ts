@@ -11,18 +11,23 @@ import { HomePageComponent } from './home/home-page/home-page.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { CartComponent } from './product/cart/cart.component';
+import { WarrentyComponent } from './home/warrenty/warrenty.component';
+import { AboutComponent } from './home/about/about.component';
 
 const routes: Routes = [
-  { path: 'admin', component: AdminComponent },
-  { path: 'auth', component: AuthComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'home', component: HomeComponent, children: [
       { path: '', component: HomePageComponent },
       { path: 'how-to-order', component: HowToOrderComponent },
       { path: 'gift-coupons', component: GiftCouponsComponent },
       { path: 'complaint-box', component: ComplaintBoxComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'warrenty', component: WarrentyComponent },
     ]
   },
+  { path: 'admin', component: AdminComponent },
+  { path: 'auth', component: AuthComponent },
   {
     path: 'product', component: ProductComponent, children: [
       { path: 'product-list', component: ProductListComponent },
@@ -30,6 +35,8 @@ const routes: Routes = [
       { path: 'cart', component: CartComponent },
     ]
   },
+  { path: '**', redirectTo: '/home' }
+
 ];
 
 @NgModule({
