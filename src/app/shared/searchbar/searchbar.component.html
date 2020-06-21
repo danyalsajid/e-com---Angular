@@ -3,11 +3,14 @@
     <input
         [(ngModel)]="searchTerm" 
         name="search"
-        type="text" 
         class="form-control rounded-0" 
         placeholder="{{placeholder}}"
+        list="browsers"
         (input)="search($event)"
         >
+        <datalist id="browsers">
+            <option [value]="item" *ngFor="let item of suggestions">
+        </datalist>
 
         <div class="input-group-append">
             <button 

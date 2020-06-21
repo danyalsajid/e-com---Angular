@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { ProductData } from 'src/app/shared/models/productData';
 
 @Component({
@@ -37,6 +37,14 @@ export class ProductDetailComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    // scroll to top on route change
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0)
+    });
+
     this.displayImg = this.product.imgUrl;
 
     // percent off price (if percent off)

@@ -14,6 +14,7 @@ export class SearchbarComponent implements OnInit, OnDestroy {
 
   @Input() widthClass: string = "";
   @Input() placeholder: string = "Search...";
+  @Input() suggestions: string[] = [];
   @Output() searchEvent = new EventEmitter<string>();
 
   searchSubject = new Subject<string>();

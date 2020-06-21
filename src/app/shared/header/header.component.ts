@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
   showDropdown = false;
   showSubDropdown = false;
-
+  categories: string[] = [];
   dropDownList = [
     {
       name: "Product Name Name",
@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.categories = ["Category 1", "Category 2", "Category 3"]; // fetch from db
   }
 
   onShowDropdown() {
