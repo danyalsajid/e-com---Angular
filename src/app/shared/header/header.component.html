@@ -19,31 +19,22 @@
     </div>
 
     <div class="d-flex justify-content-center py-2 bg-white">
-        <div class="px-4 pointer" (click)="onShowDropdown()">Categories <i class="fa fa-caret-down"></i></div>
-
-        <div class="shadow-sm p-2 pointer dropdown-element" *ngIf="showDropdown"
-            (clickOutside)="onClickedOutside($event)">
-
-            <div class="element py-2 border-bottom" *ngFor="let item of dropDownList">
-                <span class="pr-5" (click)="selectItem(item)">{{item.name}}</span>
-                <i class="fa fa-caret-right pull-right mr-2" *ngIf="item.subDropdownItem"></i>
-
-                <div class="shadow-sm p-2 pointer sub-dropdown-element w-100" *ngIf="item.subDropdownItem">
-                    <div class="element p-1 border-bottom" *ngFor="let subItem of item.subDropdownItem" (click)="selectItem(subItem)">{{subItem.name}}
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
         <div class="mx-4 pointer">
+            <app-sub-dropdown
+                [selectedOption]="'Categories'"
+                [options]="dropDownList"
+                [listWidth]="'200px'"
+                [noBorder]="true"
+                (selectedOptionEvent)="selectCategory($event)">
+            </app-sub-dropdown>
+        </div>
+        <div class="mx-4 mt-2 pointer">
             <a [routerLink]="['/home/how-to-order']" routerLinkActive="border-bottom" class="pb-1">How to Order</a>
         </div>
-        <div class="mx-4 pointer">
+        <div class="mx-4 mt-2 pointer">
             <a [routerLink]="['/home/gift-coupons']" routerLinkActive="border-bottom" class="pb-1">Gift Coupons</a>
         </div>
-        <div class="mx-4 pointer">
+        <div class="mx-4 mt-2 pointer">
             <a [routerLink]="['/home/complaint-box']" routerLinkActive="border-bottom" class="pb-1">Complaint Box</a>
         </div>
     </div>

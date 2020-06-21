@@ -9,10 +9,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { SharedRoutingModule } from './shared-routing.module';
+import { SubDropdownComponent } from './sub-dropdown/sub-dropdown.component';
 
 
 @NgModule({
-  declarations: [DropdownComponent, SearchbarComponent, HeaderComponent, FooterComponent, ProductCardComponent],
+  declarations: [DropdownComponent, SearchbarComponent, HeaderComponent, FooterComponent, ProductCardComponent, SubDropdownComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -21,6 +22,7 @@ import { SharedRoutingModule } from './shared-routing.module';
   ],
   exports: [
     DropdownComponent,
+    SubDropdownComponent,
     SearchbarComponent,
     HeaderComponent,
     FooterComponent,

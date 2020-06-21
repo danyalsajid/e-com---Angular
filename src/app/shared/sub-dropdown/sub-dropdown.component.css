@@ -1,0 +1,45 @@
+.pointer {
+    cursor: pointer;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.element {
+    display: block;
+    width: 100%;
+}
+
+.element:hover {
+    background: #fafafa;
+}
+
+.dropdown-element {
+    position: absolute;
+    background: #ffffff;
+    z-index: 9999;
+    max-height: 170px;
+    visibility: hidden;
+}
+
+.custom-dropdown:hover .dropdown-element {
+    visibility: visible;
+}
+
+.sub-dropdown-element {
+    position: absolute;
+    left: 100%;
+    background: #ffffff;
+    z-index: 9999;
+	max-height: 170px;
+	visibility: hidden;
+}
+
+.element:hover .sub-dropdown-element{
+	visibility: visible;
+}
+
+.element:hover .sub-dropdown-element{
+	visibility: visible;
+}

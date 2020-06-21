@@ -8,50 +8,37 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  showDropdown = false;
-  showSubDropdown = false;
   categories: string[] = [];
-  dropDownList = [
-    {
-      name: "Product Name Name",
-      subDropdownItem: [
-        { name: "Sub Product Name" },
-        { name: "Sub Product" },
-        { name: "Sub Product Name" },
-      ]
-    },
-    {
-      name: "Product Name",
-    },
-    {
-      name: "Product Name",
-      subDropdownItem: [
-        { name: "Sub Product Name" },
-        { name: "Sub Product Name" },
-        { name: "Sub Product Name" },
-      ]
-    },
-  ]
+  dropDownList: { option: string; subOptions?: { subOption: string }[] }[] = [];
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.categories = ["Category 1", "Category 2", "Category 3"]; // fetch from db
+    this.dropDownList = [ // fetch from db
+      {
+        option: "option 1",
+        subOptions: [
+          { subOption: "subOption 1" },
+          { subOption: "subOption 2" },
+        ],
+      },
+      {
+        option: "option 2",
+        subOptions: [
+          { subOption: "subOption 1" },
+          { subOption: "subOption 2" },
+          { subOption: "subOption 3" },
+        ],
+      },
+      {
+        option: "option 3",
+      },
+    ];
   }
 
-  onShowDropdown() {
-    this.showDropdown = !this.showDropdown;
-  }
-
-  onClickedOutside(e: Event) {
-    this.showDropdown = false;
-  }
-
-  selectItem(item) {
-    if (item["subDropdownItem"]) {
-      return;
-    } else {
-      this.router.navigate(['/product/product-list']);
-    }
+  selectCategory(item) {
+    this.router.navigate(['/product/product-list']);
   }
 
 }
