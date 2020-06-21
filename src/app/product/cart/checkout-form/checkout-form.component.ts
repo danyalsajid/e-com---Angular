@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-checkout-form',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutFormComponent implements OnInit {
 
-  constructor() { }
+  confirmOrder = false;
+
+  cartSummary = {
+    totalItems: 0,
+    totalItemsPrice: 0,
+    totalPrice: 0,
+    deliveryCharges: 0,
+  };
+
+  constructor(private service: ProductService) { }
 
   ngOnInit(): void {
+    this.cartSummary = this.service.cartSummary; // fetch from db
+    this.confirmOrder = this.service.confirmOrder; // fetch from db
+  }
+
+  onConfirmOrder() {
+    this.confirmOrder = true;
+    this.service.confirmOrder = this.confirmOrder;
   }
 
 }

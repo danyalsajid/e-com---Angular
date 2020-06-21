@@ -1,19 +1,36 @@
-<div class="row border-bottom mx-2 py-2 bg-white">
-    <div class="col-md-3 d-flex align-items-center">
-        <div class="bg-light">
-            <img src="../../assets/electronics-banner-02.jpg" style="height: 100px; width: 100px; object-fit: contain;">
+<h3 class="px-5 mx-5">Cart</h3>
+<div class="row mx-0" *ngIf="cartData.length>0">
+    <div class="col-md-5 offset-md-1 py-3">
+        <!-- cart-items -->
+        <div class="row border-bottom mx-2 py-2 bg-white" *ngFor="let item of cartData; let i=index">
+            <div class="col-md-3 d-flex align-items-center">
+                <div class="bg-light">
+                    <img [src]="item.imgUrl" style="height: 100px; width: 100px; object-fit: contain;">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5 class="p-0 m-0">{{item.productName}}</h5>
+                <p class="p-0 m-0">Rs. {{item.price}}</p>
+                <div class="d-flex justify-content-start py-3">
+                    <button class="btn btn-secondary btn-sm rounded-0 px-3 mx-1" (click)="decQty(i)">-</button>
+                    <div class="rounded-0 px-3 mx-1  pt-1 border border-dark">{{item.quantity}}</div>
+                    <button class="btn btn-secondary btn-sm rounded-0 px-3 mx-1" (click)="incQty(i)">+</button>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-items-center">
+                <button class="btn btn-outline-danger btn-sm  ml-4 rounded-0" (click)="onRemoveItem(i)">Remove</button>
+            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <h5 class="p-0 m-0">Product Name</h5>
-        <p class="p-0 m-0">Rs. 200</p>
-        <div class="d-flex justify-content-start py-3">
-            <button class="btn btn-secondary btn-sm rounded-0 px-3 mx-1">-</button>
-            <div class="rounded-0 px-3 mx-1  pt-1 border border-dark">1</div>
-            <button class="btn btn-secondary btn-sm rounded-0 px-3 mx-1">+</button>
-        </div>
+    <!-- cart summary -->
+    <div class="col-md-4 offset-md-1">
+        <app-cart-summary 
+            [cartSummary]="cartSummary"
+            [status]="'cart'">
+        </app-cart-summary>
     </div>
-    <div class="col-md-3 d-flex align-items-center">
-        <button class="btn btn-outline-danger btn-sm  ml-4 rounded-0">Remove</button>
-    </div>
+</div>
+
+<div class="m-4 p-4" *ngIf="cartData.length===0">
+    <h2 class="m-5 p-5 text-center bg-white"> <i class="fa fa-exclamation-circle"></i> Your cart is empty.</h2>
 </div>

@@ -3,5 +3,14 @@ export interface ProductData {
     category: string,
     percentOff: number,
     price: number,
-    imgUrl: string
+    imgUrl: string,
+    img2Url?: string,
+    img3Url?: string,
+    rating?: number,
+    description?: string,
+    reviews?: {
+        reviewer: string,
+        date: string,
+        review: string,
+    }[],
 }

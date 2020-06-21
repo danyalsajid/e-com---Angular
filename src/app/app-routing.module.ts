@@ -13,6 +13,8 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { CartComponent } from './product/cart/cart.component';
 import { WarrentyComponent } from './home/warrenty/warrenty.component';
 import { AboutComponent } from './home/about/about.component';
+import { CartListComponent } from './product/cart/cart-list/cart-list.component';
+import { CheckoutFormComponent } from './product/cart/checkout-form/checkout-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,7 +34,13 @@ const routes: Routes = [
     path: 'product', component: ProductComponent, children: [
       { path: 'product-list', component: ProductListComponent },
       { path: 'product-detail', component: ProductDetailComponent },
-      { path: 'cart', component: CartComponent },
+      {
+        path: 'cart', component: CartComponent, children: [
+          { path: '', redirectTo: '/product/cart/cart-list', pathMatch: 'full' },
+          { path: 'cart-list', component: CartListComponent },
+          { path: 'checkout', component: CheckoutFormComponent },
+        ]
+      },
     ]
   },
   { path: '**', redirectTo: '/home' }

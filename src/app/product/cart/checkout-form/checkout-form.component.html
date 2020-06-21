@@ -1,39 +1,69 @@
-<div class="bg-white px-5 py-4">
-    <div class="form-row">
-        <!-- First Name  -->
-        <div class="form-group col-md-6 ">
-            <label>First Name</label> <br>
-            <input class="form-control rounded-0" placeholder="First Name" type="text">
+<div *ngIf="!confirmOrder">
+    <h3 class="px-5 mx-5">Checkout</h3>
+    <div class="row mx-0">
+        <div class="col-md-5 offset-md-1 py-3">
+            <!-- Checkout-form -->
+            <div class="bg-white px-5 py-4">
+                <div class="form-row">
+                    <!-- First Name  -->
+                    <div class="form-group col-md-8 ">
+                        <label>First Name</label> <br>
+                        <input class="form-control rounded-0" placeholder="First Name" type="text">
+                    </div>
+                </div>
+                <!-- Last Name  -->
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label>Last Name</label> <br>
+                        <input class="form-control rounded-0" placeholder="Last Name" type="text">
+                    </div>
+                </div>
+                <!-- Phone Number  -->
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label>Phone Number</label> <br>
+                        <input class="form-control rounded-0" placeholder="Phone Number" type="text">
+                    </div>
+                </div>
+                <!-- City  -->
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label>City</label> <br>
+                        <app-dropdown></app-dropdown>
+                    </div>
+                </div>
+                <!-- Address  -->
+                <div class="form-row">
+                    <label>Address</label>
+                    <textarea cols="20" rows="3" value="" class="form-control" maxlength="250" placeholder="Address...">
+                </textarea>
+                    <!-- <small class="pull-right">
+                    {{250-adTextController?.value?.length}} / 250
+                </small> -->
+                </div>
+
+                <br>
+                <hr>
+                <div class="form-row">
+                    <div class="form-group col-md-12 text-center">
+                        <button class="btn btn-custom rounded-0" (click)="onConfirmOrder()">
+                            Confirm Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- cart summary -->
+        <div class="col-md-4 offset-md-1">
+            <app-cart-summary [cartSummary]="cartSummary" [status]="'checkout'">
+            </app-cart-summary>
         </div>
     </div>
-    <!-- Last Name  -->
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>Last Name</label> <br>
-            <input class="form-control rounded-0" placeholder="Last Name" type="text">
-        </div>
-    </div>
-    <!-- Phone Number  -->
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>Phone Number</label> <br>
-            <input class="form-control rounded-0" placeholder="Phone Number" type="text">
-        </div>
-    </div>
-    <!-- City  -->
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>City</label> <br>
-            <app-dropdown></app-dropdown>
-        </div>
-    </div>
-    <!-- Address  -->
-    <div class="form-row">
-        <label>Address</label>
-        <textarea cols="20" rows="3" value="" class="form-control" maxlength="250" placeholder="Address...">
-    </textarea>
-        <!-- <small class="pull-right">
-        {{250-adTextController?.value?.length}} / 250
-    </small> -->
+</div>
+
+
+<div class="m-4 p-4" *ngIf="confirmOrder">
+    <div class="alert alert-success">
+        <h4 class="text-center">Your order has beem confirmed.</h4>
     </div>
 </div>

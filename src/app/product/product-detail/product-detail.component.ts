@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductData } from 'src/app/shared/models/productData';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,7 +11,7 @@ export class ProductDetailComponent implements OnInit {
   displayImg = "";
   finalPrice = 0;
 
-  product = {
+  product: ProductData = {
     name: "Product 1",
     category: "Category",
     percentOff: 30,
