@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductData } from '../models/productData';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/product/product.service';
 
 @Component({
   selector: 'app-product-card',
@@ -17,7 +18,7 @@ export class ProductCardComponent implements OnInit {
     price: 0,
     imgUrl: "",
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router, private pService: ProductService) { }
 
   ngOnInit(): void {
     // percent off price (if percent off)
@@ -31,9 +32,15 @@ export class ProductCardComponent implements OnInit {
   selectProduct() {
     this.router.navigate(['/product/product-detail']);
   }
-  
+
   addToCart(event) {
     event.stopPropagation();
-    console.log("add to cart");
+    let productToCart = {
+      productName: this.product.name,
+      imgUrl: this.product.imgUrl,
+      price: this.product.price,
+      quantity: 1,
+    }
+    this.pService.cartData.push(productToCart);
   }
 }

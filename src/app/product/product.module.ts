@@ -10,6 +10,7 @@ import { CartComponent } from './cart/cart.component';
 import { CartListComponent } from './cart/cart-list/cart-list.component';
 import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component';
 import { CheckoutFormComponent } from './cart/checkout-form/checkout-form.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CheckoutFormComponent } from './cart/checkout-form/checkout-form.compon
     CommonModule,
     ProductRoutingModule,
     SharedModule,
+    NgxPaginationModule
   ]
 })
 export class ProductModule { }
