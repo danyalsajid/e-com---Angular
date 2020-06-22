@@ -9,6 +9,7 @@ import { ProductService } from 'src/app/product/product.service';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
+  showAddToCartModal = false;
 
   finalPrice = 0;
   @Input() product: ProductData = {
@@ -42,5 +43,10 @@ export class ProductCardComponent implements OnInit {
       quantity: 1,
     }
     this.pService.cartData.push(productToCart);
+    this.showAddToCartModal = true;
+  }
+
+  viewCart(){
+    this.router.navigate(['/product/cart']);
   }
 }

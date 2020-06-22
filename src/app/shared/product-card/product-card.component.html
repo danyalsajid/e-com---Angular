@@ -26,3 +26,9 @@
         </div>
     </div>
 </div>
+
+<app-add-to-cart-modal 
+    [showModal]="showAddToCartModal"
+    (submitEvent)="viewCart()"
+    (closeEvent)="showAddToCartModal=false">
+</app-add-to-cart-modal>
