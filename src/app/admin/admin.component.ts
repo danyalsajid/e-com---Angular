@@ -5,16 +5,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
-  sideMenuOptions: { name: string, icon: string, active: boolean }[] = [
-    { name: "Add Home Page", icon: "fa-home", active: true },
-    { name: "View/Edit Home Page", icon: "fa-home", active: false },
-    { name: "Add Category", icon: "fa-list", active: false },
-    { name: "View/Edit Category", icon: "fa-list", active: false },
-    { name: "Add Product", icon: "fa-archive", active: false },
-    { name: "View/Edit Product", icon: "fa-archive", active: false },
-    { name: "View/Edit Order", icon: "fa-file-text-o", active: false },
-    { name: "View/Edit Complaint", icon: "fa-exclamation-circle", active: false },
+export class AdminComponent implements OnInit {routerLink
+  sideMenuOptions: { name: string, icon: string, routerLink: string }[] = [
+    { name: "Add Home Page", icon: "fa-home", routerLink: "/admin/add-home" },
+    { name: "View/Edit Home Page", icon: "fa-home", routerLink: "/admin/view-home" },
+    { name: "Add Category", icon: "fa-list", routerLink: "/admin/add-category" },
+    { name: "View/Edit Category", icon: "fa-list", routerLink: "/admin/view-category" },
+    { name: "Add Product", icon: "fa-archive", routerLink: "/admin/add-product" },
+    { name: "View/Edit Product", icon: "fa-archive", routerLink: "/admin/view-product" },
+    { name: "View/Edit Order", icon: "fa-file-text-o", routerLink: "/admin/view-order" },
+    { name: "View/Edit Complaint", icon: "fa-exclamation-circle", routerLink: "/admin/view-complaint" },
   ];
 
   selectedSideMenuOption: string = this.sideMenuOptions[0].name;
@@ -26,13 +26,6 @@ export class AdminComponent implements OnInit {
 
   onSelectMenu(sideMenuOption: string) {
     this.selectedSideMenuOption = sideMenuOption;
-    for (const iterator of this.sideMenuOptions) {
-      if (sideMenuOption === iterator.name) {
-        iterator.active = true;
-      } else {
-        iterator.active = false;
-      }
-    }
   }
 
   logout(){

@@ -15,9 +15,18 @@ import { WarrentyComponent } from './home/warrenty/warrenty.component';
 import { AboutComponent } from './home/about/about.component';
 import { CartListComponent } from './product/cart/cart-list/cart-list.component';
 import { CheckoutFormComponent } from './product/cart/checkout-form/checkout-form.component';
+import { AddHomeComponent } from './admin/add-home/add-home.component';
+import { ViewHomeComponent } from './admin/view-home/view-home.component';
+import { AddCategoryComponent } from './admin/add-category/add-category.component';
+import { ViewCategoryComponent } from './admin/view-category/view-category.component';
+import { AddProductComponent } from './admin/add-product/add-product.component';
+import { ViewProductComponent } from './admin/view-product/view-product.component';
+import { ViewOrderComponent } from './admin/view-order/view-order.component';
+import { ViewComplaintComponent } from './admin/view-complaint/view-complaint.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // home routes
   {
     path: 'home', component: HomeComponent, children: [
       { path: '', component: HomePageComponent },
@@ -28,8 +37,7 @@ const routes: Routes = [
       { path: 'warrenty', component: WarrentyComponent },
     ]
   },
-  { path: 'admin', component: AdminComponent },
-  { path: 'auth', component: AuthComponent },
+  // product routes
   {
     path: 'product', component: ProductComponent, children: [
       { path: 'product-list', component: ProductListComponent },
@@ -43,6 +51,21 @@ const routes: Routes = [
       },
     ]
   },
+  // admin routes
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: '', redirectTo: '/admin/add-home', pathMatch: 'full' },
+      { path: 'add-home', component: AddHomeComponent },
+      { path: 'view-home', component: ViewHomeComponent },
+      { path: 'add-category', component: AddCategoryComponent },
+      { path: 'view-category', component: ViewCategoryComponent },
+      { path: 'add-product', component: AddProductComponent },
+      { path: 'view-product', component: ViewProductComponent },
+      { path: 'view-order', component: ViewOrderComponent },
+      { path: 'view-complaint', component: ViewComplaintComponent },
+    ]
+  },
+  { path: 'auth', component: AuthComponent },
   { path: '**', redirectTo: '/home' }
 
 ];
