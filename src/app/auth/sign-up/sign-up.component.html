@@ -1,0 +1,66 @@
+<div class="row bg-white">
+    <div class="col-md-12 text-center" *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+
+    <div class="col-md-4 mx-auto border m-5 p-5" *ngIf="!isLoading">
+
+        <div class="alert alert-danger" *ngIf="error">
+            <p>{{ error }}</p>
+        </div>
+          
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+            <div class="form-group">
+                <label>First name</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="First name"
+                    ngModel
+                    name="fname"
+                    required
+                    >
+            </div>
+            <div class="form-group">
+                <label>Last name</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Last name"
+                    ngModel
+                    name="lname"
+                    required
+                    >
+            </div>
+            <div class="form-group">
+                <label>Email address</label>
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    placeholder="Enter email"
+                    ngModel
+                    name="email"
+                    required
+                    email>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    placeholder="Password"
+                    ngModel
+                    name="password"
+                    required
+                    minlength="6">
+            </div>
+            <br>
+            <hr>
+            <div class="form-group text-center">
+                <button class="btn btn-custom mx-2" type="submit" [disabled]="!authForm.valid">SignUp</button>
+                |
+                <span class="text-primary mx-2 pointer" (click)="onSwitchMode()">(Switch to Sign In)</span>
+            </div>
+        </form>
+    </div>
+</div>

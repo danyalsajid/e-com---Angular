@@ -10,12 +10,16 @@ import { ProductModule } from './product/product.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
+    SignInComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

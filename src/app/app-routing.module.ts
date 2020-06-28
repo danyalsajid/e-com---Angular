@@ -24,6 +24,8 @@ import { ViewOrderComponent } from './admin/view-order/view-order.component';
 import { ViewComplaintComponent } from './admin/view-complaint/view-complaint.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -66,7 +68,14 @@ const routes: Routes = [
       { path: 'view-complaint', component: ViewComplaintComponent },
     ]
   },
-  { path: 'auth', component: AuthComponent },
+  // auth routes
+  {
+    path: 'auth', component: AuthComponent, children: [
+      { path: '', redirectTo: '/auth/sign-in', pathMatch: 'full' },
+      { path: 'sign-in', component: SignInComponent },
+      { path: 'sign-up', component: SignUpComponent },
+    ]
+  },
   { path: '**', redirectTo: '/home' }
 
 ];
