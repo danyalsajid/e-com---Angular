@@ -10,11 +10,23 @@
             <app-searchbar [widthClass]="'w-100'" [suggestions]="categories"></app-searchbar>
         </div>
 
-        <div class="nav-item pt-2">
-            <span class="text-secondary pointer">
-                <a [routerLink]="['/product/cart']"><i class="fa fa-shopping-cart"></i> Cart</a>
-            </span>
-            | <span class="text-secondary pointer"><i class="fa fa-user-circle-o"></i> User</span>
+        <div class="nav-item d-flex justify-content-between text-secondary" *ngIf="isAuthenticated">
+            <div class="cart-item pointer mt-1">
+                <a [routerLink]="['/product/cart']"><i class="fa fa-shopping-cart fa-lg"></i> Cart | </a>
+            </div>
+            <div class="user-item d-flex justify-content-between">
+                <i class="fa fa-user-circle-o fa-lg ml-3 mt-2"></i>
+                <app-dropdown
+                    [selectedOption]="'UserName'"
+                    [options]="['View Orders', 'Log out']"
+                    [noBorder]="true"
+                    (selectedOptionEvent)="onSelectUserOption($event)">
+                </app-dropdown>
+            </div>
+        </div>
+
+        <div class="nav-item text-secondary mt-2 pointer" *ngIf="!isAuthenticated" (click)="onLogIn()">
+            <i class="fa fa-user-circle-o fa-lg ml-3 mt-2"></i> LogIn
         </div>
     </div>
 

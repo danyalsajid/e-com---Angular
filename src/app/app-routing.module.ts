@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { HowToOrderComponent } from './home/how-to-order/how-to-order.component';
@@ -23,6 +22,8 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { ViewProductComponent } from './admin/view-product/view-product.component';
 import { ViewOrderComponent } from './admin/view-order/view-order.component';
 import { ViewComplaintComponent } from './admin/view-complaint/view-complaint.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -43,7 +44,7 @@ const routes: Routes = [
       { path: 'product-list', component: ProductListComponent },
       { path: 'product-detail', component: ProductDetailComponent },
       {
-        path: 'cart', component: CartComponent, children: [
+        path: 'cart', component: CartComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: '/product/cart/cart-list', pathMatch: 'full' },
           { path: 'cart-list', component: CartListComponent },
           { path: 'checkout', component: CheckoutFormComponent },
