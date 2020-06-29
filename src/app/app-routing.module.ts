@@ -45,6 +45,7 @@ const routes: Routes = [
     path: 'product', component: ProductComponent, children: [
       { path: 'product-list', component: ProductListComponent },
       { path: 'product-detail', component: ProductDetailComponent },
+      //cart routes
       {
         path: 'cart', component: CartComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: '/product/cart/cart-list', pathMatch: 'full' },
@@ -56,7 +57,7 @@ const routes: Routes = [
   },
   // admin routes
   {
-    path: 'admin', component: AdminComponent, children: [
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: '/admin/add-home', pathMatch: 'full' },
       { path: 'add-home', component: AddHomeComponent },
       { path: 'view-home', component: ViewHomeComponent },
