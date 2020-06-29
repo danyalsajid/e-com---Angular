@@ -121,6 +121,8 @@ export class AddProductComponent implements OnInit {
     // store in db
     console.log(productData);
 
+    this.service.uploadImage(this.productImageToUpload);
+
     // reset form 
     form.reset()
     this.productImageToUpload = null;

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import * as firebase from 'firebase';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.autoLogin();
+    firebase.initializeApp(environment.firebaseConfig);
   }
 }
