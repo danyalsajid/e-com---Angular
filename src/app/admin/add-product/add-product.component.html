@@ -1,15 +1,21 @@
-<!-- <form
-    #authForm="ngForm"
-    (ngSubmit)="onSubmit(authForm)"
+<form
+    #productForm="ngForm"
+    (ngSubmit)="onSubmit(productForm)"
 >
     <div class="form-row">
         <div class="form-group col-md-3">
             <label>Select Category</label>
-            <app-dropdown></app-dropdown>
+            <app-dropdown
+                [options]="categories"
+                (selectedOptionEvent)="selectCategory($event)"
+            ></app-dropdown>
         </div>
         <div class="form-group col-md-3">
             <label>Select Sub Category</label>
-            <app-dropdown></app-dropdown>
+            <app-dropdown
+                [options]="subCategories"
+                (selectedOptionEvent)="selectSubCategory($event)"
+            ></app-dropdown>
         </div>
     </div>
 
@@ -29,26 +35,31 @@
 
     <div class="form-row">
         <div class="form-group col-md-12 pr-5">
-            <label for="file">Advertisement Image</label>
+            <label for="file">Product Image</label>
             <br>
             <input
                 class="choose-file"
                 type="file"
+                [formControl]="productFileController"
+                (change)="handleProductFileInput($event.target.files)"
             >
         </div>
     </div>
 
     <div class="form-row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
             <label>Product Description</label>
-            <input
+            <textarea
                 type="text"
                 class="form-control"
                 placeholder="Enter product description"
                 ngModel
                 name="productDescription"
+                cols="20"
+                rows="7"
+                maxlength="600"
                 required
-            >
+            ></textarea>
         </div>
     </div>
 
@@ -66,15 +77,20 @@
             >
         </div>
     </div>
-    
+
     <div class="form-row">
         <div class="form-group col-md-4">
             <label>% Off</label>
-            <app-dropdown></app-dropdown>
+            <app-dropdown
+                [options]="yesNoOptions"
+                (selectedOptionEvent)="perOff = $event"
+            ></app-dropdown>
         </div>
     </div>
-    
-    <div class="form-row">
+    <div
+        class="form-row"
+        *ngIf="perOff === 'Yes'"
+    >
         <div class="form-group col-md-4">
             <label>% Off Value</label>
             <input
@@ -88,15 +104,20 @@
             >
         </div>
     </div>
-    
+
     <div class="form-row">
         <div class="form-group col-md-4">
             <label>In Stock</label>
-            <app-dropdown></app-dropdown>
+            <app-dropdown
+                [options]="yesNoOptions"
+                (selectedOptionEvent)="inStock = $event "
+            ></app-dropdown>
         </div>
     </div>
-    
-    <div class="form-row">
+    <div
+        class="form-row"
+        *ngIf="inStock === 'Yes'"
+    >
         <div class="form-group col-md-4">
             <label>Quantity</label>
             <input
@@ -104,7 +125,7 @@
                 class="form-control"
                 placeholder="Enter Quantity"
                 ngModel
-                name="Quantity"
+                name="quantity"
                 required
                 pattern="^[1-9]+[0-9]*$"
             >
@@ -113,13 +134,19 @@
 
     <br>
     <hr>
+    <p
+        class="text-danger text-center"
+        *ngIf="error"
+    >
+        {{errorMessage}}
+    </p>
     <div class="form-group text-center">
         <button
             class="btn btn-custom mx-2"
             type="submit"
-            [disabled]="!authForm.valid"
+            [disabled]="!productForm.valid"
         >
             Add
         </button>
     </div>
-</form> -->
+</form>

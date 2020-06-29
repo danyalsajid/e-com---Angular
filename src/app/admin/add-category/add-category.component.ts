@@ -33,11 +33,11 @@ export class AddCategoryComponent implements OnInit {
 
     let categoryData = {
       category: form.value.category,
-      subCategory: []
+      subCategories: []
     };
 
     this.subCategoriesInput.forEach(item => {
-      categoryData.subCategory.push(form.value[item]);
+      categoryData.subCategories.push(form.value[item]);
     });
 
     this.service.storeCategory(categoryData).subscribe(
