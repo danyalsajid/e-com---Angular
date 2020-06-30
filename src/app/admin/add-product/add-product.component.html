@@ -33,15 +33,52 @@
         </div>
     </div>
 
-    <div class="form-row">
+    <app-loading-spinner
+        class="pull-left"
+        *ngIf="uploading"
+    ></app-loading-spinner>
+    <div
+        class="form-row"
+        [ngClass]="{'hidden': uploading}"
+    >
         <div class="form-group col-md-12 pr-5">
-            <label for="file">Product Image</label>
+            <label for="file">Product Image 1</label>
             <br>
             <input
                 class="choose-file"
                 type="file"
-                [formControl]="productFileController"
-                (change)="handleProductFileInput($event.target.files)"
+                [formControl]="productFileController1"
+                (change)="handleProductFileInput1($event.target.files)"
+            >
+        </div>
+    </div>
+    <div
+        class="form-row"
+        [ngClass]="{'hidden': uploading}"
+    >
+        <div class="form-group col-md-12 pr-5">
+            <label for="file">Product Image 2</label>
+            <br>
+            <input
+                class="choose-file"
+                type="file"
+                [formControl]="productFileController2"
+                (change)="handleProductFileInput2($event.target.files)"
+            >
+        </div>
+    </div>
+    <div
+        class="form-row"
+        [ngClass]="{'hidden': uploading}"
+    >
+        <div class="form-group col-md-12 pr-5">
+            <label for="file">Product Image 3</label>
+            <br>
+            <input
+                class="choose-file"
+                type="file"
+                [formControl]="productFileController3"
+                (change)="handleProductFileInput3($event.target.files)"
             >
         </div>
     </div>
