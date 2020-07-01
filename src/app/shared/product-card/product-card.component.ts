@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductData } from '../models/productData';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/product/product.service';
+import { ProductData } from '../models/productData';
 
 @Component({
   selector: 'app-product-card',
@@ -13,20 +13,25 @@ export class ProductCardComponent implements OnInit {
 
   finalPrice = 0;
   @Input() product: ProductData = {
-    name: "",
     category: "",
-    percentOff: 0,
-    price: 0,
-    imgUrl: "",
+    subCategory: "",
+    productName: "",
+    imgUrls: [],
+    productDescription: "",
+    productPrice: 0,
+    perOff: "",
+    perOffValue: 0,
+    inStock: "",
+    quantity: 0,
   }
   constructor(private router: Router, private pService: ProductService) { }
 
   ngOnInit(): void {
     // percent off price (if percent off)
-    if (this.product.percentOff > 0) {
-      this.finalPrice = Math.ceil(this.product.price - (this.product.price / 100) * this.product.percentOff);
+    if (this.product.perOffValue > 0) {
+      this.finalPrice = Math.ceil(this.product.productPrice - (this.product.productPrice / 100) * this.product.productPrice);
     } else {
-      this.finalPrice = this.product.price;
+      this.finalPrice = this.product.productPrice;
     }
   }
 
@@ -37,16 +42,16 @@ export class ProductCardComponent implements OnInit {
   addToCart(event) {
     event.stopPropagation();
     let productToCart = {
-      productName: this.product.name,
-      imgUrl: this.product.imgUrl,
-      price: this.product.price,
+      productName: this.product.productName,
+      imgUrl: this.product.imgUrls[0],
+      price: this.product.productPrice,
       quantity: 1,
     }
     this.pService.cartData.push(productToCart);
     this.showAddToCartModal = true;
   }
 
-  viewCart(){
+  viewCart() {
     this.router.navigate(['/product/cart']);
   }
 }

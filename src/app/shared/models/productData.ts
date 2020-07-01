@@ -1,16 +1,12 @@
 export interface ProductData {
-    name: string,
-    category: string,
-    percentOff: number,
-    price: number,
-    imgUrl: string,
-    img2Url?: string,
-    img3Url?: string,
-    rating?: number,
-    description?: string,
-    reviews?: {
-        reviewer: string,
-        date: string,
-        review: string,
-    }[],
+    category: string
+    subCategory: string
+    productName: string
+    imgUrls: string[]
+    productDescription: string 
+    productPrice: number
+    perOff: string
+    perOffValue: number
+    inStock: string
+    quantity: number
 }

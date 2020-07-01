@@ -165,7 +165,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
       productDescription: form.value.productDescription,
       productPrice: form.value.productPrice,
       perOff: this.perOff,
-      perOffVale: form.value.perOffValue ? form.value.perOffValue : 0,
+      perOffValue: form.value.perOffValue ? form.value.perOffValue : 0,
       inStock: this.inStock,
       quantity: form.value.quantity ? form.value.quantity : 0,
     }

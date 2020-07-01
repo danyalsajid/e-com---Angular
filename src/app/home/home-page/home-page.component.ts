@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductData } from 'src/app/shared/models/productData';
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +7,7 @@ import { ProductData } from 'src/app/shared/models/productData';
 })
 export class HomePageComponent implements OnInit {
 
-  products: ProductData[] = [];
+  products = [];
   constructor() { }
 
   ngOnInit(): void {

@@ -5,7 +5,8 @@ import { take, exhaustMap } from 'rxjs/operators';
 import * as firebase from 'firebase';
 
 import { CategoryData } from '../shared/models/categoryData';
-import { Subscription, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
+import { ProductData } from '../shared/models/productData';
 
 @Injectable({ providedIn: 'root' })
 export class AdminService {
@@ -54,7 +55,7 @@ export class AdminService {
             });
     }
 
-    storeProduct(productData) {
+    storeProduct(productData: ProductData) {
         const node = 'productData'
         return this.authService.user.pipe(take(1), exhaustMap(user => {
             const endpoint = this.dbAddress + node + '.json?auth=' + user.token;

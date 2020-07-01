@@ -1,26 +1,27 @@
 <div class="col-md-3 my-3 pointer" (click)="selectProduct()">
     <div class="card rounded-0" style="width: 15rem; z-index: 1;">
         <div class="bg-light">
-            <img class="card-img-top" [src]="product.imgUrl" height="200px" style="object-fit: contain;">
+            <img class="card-img-top" [src]="product.imgUrls[0]" height="200px" style="object-fit: contain;">
         </div>
         <div class="card-img-overlay">
-            <div class="text-light pl-3 percent-box" *ngIf="product.percentOff > 0">
-                <small>{{product.percentOff}}% Off</small>
+            <div class="text-light pl-3 percent-box" *ngIf="product.perOffValue > 0">
+                <small>{{product.perOffValue}}% Off</small>
             </div>
-            <div class="text-light pl-3 shadow percent-triangle" *ngIf="product.percentOff > 0">
+            <div class="text-light pl-3 shadow percent-triangle" *ngIf="product.perOffValue > 0">
             </div>
             <button class="btn btn-sm btn-custom pull-right rounded-0"
-                [ngClass]="{'top-30': product.percentOff > 0, 'top-60': product.percentOff === 0}"
+                [ngClass]="{'top-30': product.perOffValue > 0, 'top-60': product.perOffValue === 0}"
                 (click)="addToCart($event);">
                 Add to Cart
             </button>
         </div>
         <div class="card-body">
-            <h5 class="card-title py-0 my-0">{{product.name}}</h5>
+            <h5 class="card-title py-0 my-0">{{product.productName}}</h5>
             <small class="py-0 my-0">{{product.category}}</small>
+            <small class="py-0 my-0" *ngIf="product.subCategory !== ''"> > {{product.subCategory}}</small>
             <p>
-                <s class="text-secondary strike" *ngIf="product.percentOff > 0">
-                    <small>Rs. {{product.price}}</small>
+                <s class="text-secondary strike" *ngIf="product.perOffValue > 0">
+                    <small>Rs. {{product.productPrice}}</small>
                 </s>
                 Rs. {{finalPrice}}</p>
         </div>

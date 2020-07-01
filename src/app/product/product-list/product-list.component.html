@@ -1,6 +1,6 @@
 <div class="bg-white m-3">
 
-    <!-- Product list  -->
+    <!-- Product list -->
     <div class="px-5 pt-3">
         <div class="d-flex justify-content-between">
             <div class="d-flex justify-content-between">
@@ -8,31 +8,38 @@
             </div>
 
             <div class="d-flex justify-content-between mr-5">
-                <span class="mt-2 mr-2">Sort By: </span>
-                <app-dropdown 
+                <span class="mt-2 mr-2">Sort By:</span>
+                <app-dropdown
                     [options]="sortOrder"
-                    (selectedOptionEvent)="sortProducts($event)">
+                    (selectedOptionEvent)="sortProducts($event)"
+                >
                 </app-dropdown>
             </div>
         </div>
         <br>
 
         <div class="row px-5">
-            <app-product-card *ngFor="let product of products | 
+            <app-product-card
+                *ngFor="let product of productData | 
                 paginate: {
                     itemsPerPage: pageSize,
                     currentPage: page, 
-                    totalItems: products.length
-                }" 
-                [product]="product">
+                    totalItems: productData.length
+                }"
+                [product]="product"
+            >
             </app-product-card>
         </div>
 
     </div>
-    <!-- Pagination  -->
-    
+    <!-- Pagination -->
+
     <div class="text-center py-3">
-        <pagination-controls class="custom-pagination" autoHide="true" (pageChange)="changePage($event)">
+        <pagination-controls
+            class="custom-pagination"
+            autoHide="true"
+            (pageChange)="changePage($event)"
+        >
         </pagination-controls>
     </div>
 </div>
