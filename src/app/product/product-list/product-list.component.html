@@ -25,8 +25,9 @@
                     itemsPerPage: pageSize,
                     currentPage: page, 
                     totalItems: productData.length
-                }"
+                }; let i=index"
                 [product]="product"
+                [productId]="productIds[i]"
             >
             </app-product-card>
         </div>

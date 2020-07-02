@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
 
   sortOrder: string[] = ["Price: high to low", "Price: low to high"];
   productData: ProductData[] = [];
+  productIds: string[] = [];
 
   constructor(private service: ProductService) { }
 
@@ -21,6 +22,7 @@ export class ProductListComponent implements OnInit {
       if (data) {
         for (let key in data) {
           this.productData.push(data[key]);
+          this.productIds.push(key);
         }
       }
     }, error => console.log(error));

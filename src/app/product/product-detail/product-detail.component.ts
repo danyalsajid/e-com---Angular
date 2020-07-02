@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { ProductService } from '../product.service';
+import { ProductData } from 'src/app/shared/models/productData';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,30 +12,27 @@ export class ProductDetailComponent implements OnInit {
   displayImg = "";
   finalPrice = 0;
 
-  product: {
-    name: "Product 1",
-    category: "Category",
-    percentOff: 30,
-    price: 300,
-    imgUrl: "../../assets/electronics-banner-02.jpg",
-    img2Url: "../../assets/electronics-banner-02.jpg",
-    img3Url: "../../assets/electronics-banner-02.jpg",
-    rating: 4.5,
-    description: "Ad illum natoque volutpat leo curabitur est nisi reprehenderit quisque illo ullam scelerisque viverra taciti voluptatum adipiscing omnis vel augue convallis anim dis quis et molestiae, eos aenean corrupti neque? Interdum, quisque diam molestie porta iaculis earum? Non magni bibendum eum fugiat, fringilla donec",
-    reviews: [
-      {
-        reviewer: "Name Surename",
-        date: "5 Sep 2020",
-        review: "Porta corporis nibh. Adipisci maiores dui torquent porttitor wisi necessitatibus lorem perspiciatis repudiandae ad nesciunt deleniti facilisi, est orci libero.",
-      },
-      {
-        reviewer: "Name Surename",
-        date: "5 Sep 2020",
-        review: "Porta corporis nibh. Adipisci maiores dui torquent porttitor wisi necessitatibus lorem perspiciatis repudiandae ad nesciunt deleniti facilisi, est orci libero.",
-      },
-    ]
-  }
-  constructor(private router: Router) { }
+  product: ProductData = {
+    category: "",
+    subCategory: "",
+    productName: "",
+    imgUrls: [],
+    productDescription: "",
+    productPrice: 0,
+    perOff: "",
+    perOffValue: 0,
+    inStock: "",
+    quantity: 0,
+    dateAdded: "",
+    rating: 0,
+    reviews: [],
+  };
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private service: ProductService,
+  ) { }
 
   ngOnInit(): void {
     // scroll to top on route change
@@ -44,13 +43,20 @@ export class ProductDetailComponent implements OnInit {
       window.scrollTo(0, 0);
     });
 
-    this.displayImg = this.product.imgUrl;
+    // fetch product from db
+    this.service.fetchProductData().subscribe(data => {
+      const productKey = this.route.snapshot.params['productId'];
+      this.product = data[productKey];
+
+      // default selected image in image viewer
+      this.displayImg = this.product.imgUrls[0];
+    });
 
     // percent off price (if percent off)
-    if (this.product.percentOff > 0) {
-      this.finalPrice = Math.ceil(this.product.price - (this.product.price / 100) * this.product.percentOff);
+    if (this.product.perOffValue > 0) {
+      this.finalPrice = Math.ceil(this.product.productPrice - (this.product.productPrice / 100) * this.product.perOffValue);
     } else {
-      this.finalPrice = this.product.price;
+      this.finalPrice = this.product.productPrice;
     }
   }
 

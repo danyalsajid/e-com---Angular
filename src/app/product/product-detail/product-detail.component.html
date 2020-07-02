@@ -1,73 +1,107 @@
-<!-- Product Overview-->
+<!-- Product Overview -->
 <div class="bg-white mx-5">
     <div class="row py-4 pl-5 ">
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="row mb-2" *ngIf="product.imgUrl">
-                        <img [src]="product.imgUrl" class="bg-light pointer"
-                            style="object-fit: contain; height:100px; width:100px" (click)="showImage(product.imgUrl)">
-                    </div>
-                    <div class="row mb-2" *ngIf="product.img2Url">
-                        <img [src]="product.img2Url" class="bg-light pointer"
-                            style="object-fit: contain; height:100px; width:100px" (click)="showImage(product.img2Url)">
-                    </div>
-                    <div class="row mb-2" *ngIf="product.img3Url">
-                        <img [src]="product.img3Url" class="bg-light pointer"
-                            style="object-fit: contain; height:100px; width:100px" (click)="showImage(product.img3Url)">
+                    <div
+                        *ngFor="let imgUrl of product.imgUrls"
+                        class="row mb-2"
+                    >
+                        <img
+                            [src]="imgUrl"
+                            class="bg-light pointer"
+                            style="object-fit: contain; height:100px; width:100px"
+                            (click)="showImage(imgUrl)"
+                        >
                     </div>
                 </div>
                 <div class="col-md-9">
                     <div class="row">
-                        <img [src]="displayImg" class="bg-light" style="object-fit: contain; height:400px; width:100%">
+                        <img
+                            [src]="displayImg"
+                            class="bg-light"
+                            style="object-fit: contain; height:400px; width:100%"
+                        >
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <p>{{product.category}}</p>
-            <h3>{{product.name}}</h3>
-            <p> <i class="fa fa-star" style="color: yellow;"></i> <small> {{product.rating}} rating (7 Reviews)</small>
+            <p>
+                {{product.category}}
+                <span *ngIf="product.subCategory">> {{product.subCategory}}</span>
+            </p>
+            <h3>{{product.productName}}</h3>
+            <p>
+                <i
+                    *ngIf="product.rating"
+                    class="fa fa-star"
+                    style="color: yellow;"
+                ></i>
+                <small>
+                    <span *ngIf="product.rating">{{product.rating}} rating</span>
+                    <span *ngIf="product.reviews">({{product.reviews.length}} Reviews)</span>
+                </small>
             </p>
 
-            <br><br>
+            <br>
+            <br>
             <div class="d-flex justify-content-start align-items-center pb-3">
-                <p class="mt-3"><small><s class="text-secondary">Rs. {{product.price}}</s></small> Rs. {{finalPrice}}
+                <p class="mt-3">
+                    <small>
+                        <s class="text-secondary">Rs. {{product.productPrice}}</s>
+                    </small>
+                    Rs. {{finalPrice}}
                 </p>
 
                 <div class="ml-3 border p-1">
-                    <small>{{product.percentOff}}% off</small>
+                    <small>{{product.perOffValue}}% off</small>
                 </div>
 
             </div>
             <div class="d-flex justify-content-start">
                 <button class="btn btn-custom rounded-0 mr-2">Add to Cart</button>
-                <button class="btn btn-custom rounded-0" (click)="buyNow()">Buy Now</button>
+                <button
+                    class="btn btn-custom rounded-0"
+                    (click)="buyNow()"
+                >
+                    Buy Now
+                </button>
             </div>
         </div>
     </div>
 </div>
 
-<br><br>
+<br>
+<br>
 <!-- Product Description -->
 <div class="mx-5 bg-white text-dark p-3">
     <h4>Product Details</h4>
-    <p>{{product.description}}</p>
+    <p>{{product.productDescription}}</p>
 </div>
 
-<br><br>
+<br>
+<br>
 <!-- Reviews -->
 <div class="mx-5 bg-white p-3 px-5">
     <div class="d-flex justify-content-between">
-        <h4>Reviews ({{product.reviews.length}})</h4>
+        <h4 *ngIf="product.reviews">Reviews ({{product.reviews.length}})</h4>
+        <h4 *ngIf="!product.reviews">Reviews (0)</h4>
         <button class="btn btn-custom rounded-0">Write Review</button>
     </div>
 
-    <div class="row" *ngFor="let review of product.reviews">
+    <div
+        class="row"
+        *ngFor="let review of product.reviews"
+    >
         <div class="col-md-1">
             <i class="fa fa-user-circle-o fa-2x pull-right"></i>
         </div>
-        <div class="col-md-8">
+        <div
+            class="col-md-8"
+            *ngIf="product.reviews"
+        >
             <p>{{review.reviewer}}</p>
             <small>{{review.date}}</small>
             <p>{{review.review}}</p>

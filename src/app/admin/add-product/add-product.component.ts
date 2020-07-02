@@ -54,7 +54,14 @@ export class AddProductComponent implements OnInit, OnDestroy {
           this.categories.push(element.category);
         });
       }
-    }, error => console.log(error))
+    }, error => console.log(error));
+
+    //store img urls
+    this.downloadURLSub = this.service.downloadURLSubject.subscribe(url => {
+      this.imgUrls.push(url);
+      this.uploading = false;
+    });
+
   }
 
   selectCategory(category) {
@@ -75,10 +82,6 @@ export class AddProductComponent implements OnInit, OnDestroy {
     this.uploading = true;
     this.productImageToUpload1 = files.item(0);
     this.service.uploadImage(this.productImageToUpload1);
-    this.downloadURLSub = this.service.downloadURLSubject.subscribe(url => {
-      this.imgUrls.push(url);
-      this.uploading = false;
-    });
   }
 
   handleProductFileInput2(files: FileList) {
@@ -139,7 +142,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
 }
 
   onSubmit(form: NgForm) {
-    if (!form.valid || this.selectedCategory === "" || this.selectedSubCategory === "") {
+    if (!form.valid || this.selectedCategory === "") {
       this.error = true;
       this.errorMessage = "Error! Please input all values.";
       return;
@@ -157,6 +160,8 @@ export class AddProductComponent implements OnInit, OnDestroy {
     }
 
     let uniqueImgUrls = this.imgUrls.filter( this.onlyUnique );
+    let date = new Date();
+
     let productData = {
       category: this.selectedCategory,
       subCategory: this.selectedSubCategory,
@@ -168,6 +173,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
       perOffValue: form.value.perOffValue ? form.value.perOffValue : 0,
       inStock: this.inStock,
       quantity: form.value.quantity ? form.value.quantity : 0,
+      dateAdded: date.toString(),
     }
 
     // store in db

@@ -23,7 +23,9 @@ export class ProductCardComponent implements OnInit {
     perOffValue: 0,
     inStock: "",
     quantity: 0,
+    dateAdded: ""
   }
+  @Input() productId = "";
   constructor(private router: Router, private pService: ProductService) { }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   selectProduct() {
-    this.router.navigate(['/product/product-detail']);
+    this.router.navigate(['/product/product-detail/' + this.productId]);
   }
 
   addToCart(event) {

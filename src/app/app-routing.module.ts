@@ -44,7 +44,7 @@ const routes: Routes = [
   {
     path: 'product', component: ProductComponent, children: [
       { path: 'product-list', component: ProductListComponent },
-      { path: 'product-detail', component: ProductDetailComponent },
+      { path: 'product-detail/:productId', component: ProductDetailComponent },
       //cart routes
       {
         path: 'cart', component: CartComponent, canActivate: [AuthGuard], children: [
