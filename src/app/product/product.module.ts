@@ -17,8 +17,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
   declarations: [ProductComponent, ProductListComponent, ProductDetailComponent, CartComponent, CartListComponent, CartSummaryComponent, CheckoutFormComponent],
   imports: [
     CommonModule,
-    ProductRoutingModule,
     SharedModule,
+    ProductRoutingModule,
     NgxPaginationModule
   ]
 })

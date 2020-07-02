@@ -15,7 +15,7 @@
                     <div *ngIf="option.subOptions" class="border rounded-0 pointer sub-dropdown-element"
                         style="display: inline-block;" [ngStyle]="{'width': listWidth}">
                         <a class="element p-2" *ngFor="let subOption  of option.subOptions"
-                            (click)="selectSubOption(subOption)">{{subOption.subOption}}</a>
+                            (click)="selectSubOption(subOption)">{{subOption}}</a>
                     </div>
                 </a>
             </div>

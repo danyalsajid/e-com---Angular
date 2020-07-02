@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SubDropdownComponent implements OnInit {
   @Input() selectedOption = "Select"
-  @Input() options: { option: string; subOptions?: { subOption: string }[] }[] = [];
+  @Input() options: { option: string; subOptions?: string[] }[] = [];
   @Input() listWidth = "";
   @Input() noBorder = false;
   @Input() noBackground = true;
@@ -28,7 +28,7 @@ export class SubDropdownComponent implements OnInit {
   }
 
   selectSubOption(subOption) {
-    this.selectedOptionEvent.emit(subOption.subOption);
+    this.selectedOptionEvent.emit(subOption);
   }
 
 }

@@ -43,7 +43,7 @@ const routes: Routes = [
   // product routes
   {
     path: 'product', component: ProductComponent, children: [
-      { path: 'product-list', component: ProductListComponent },
+      { path: 'product-list/:category', component: ProductListComponent },
       { path: 'product-detail/:productId', component: ProductDetailComponent },
       //cart routes
       {

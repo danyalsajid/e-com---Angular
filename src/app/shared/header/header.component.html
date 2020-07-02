@@ -8,7 +8,8 @@
             [routerLink]="['/home']"
         >
             <a [routerLink]="['/home']">
-                e-<span style="color:#dc32e6;">Godham</span>
+                e-
+                <span style="color:#dc32e6;">Godham</span>
             </a>
         </div>
 
@@ -16,6 +17,7 @@
             <app-searchbar
                 [widthClass]="'w-100'"
                 [suggestions]="categories"
+                (searchEvent)="searh($event)"
             ></app-searchbar>
         </div>
 
@@ -46,7 +48,7 @@
             *ngIf="!isAuthenticated"
         >
             <i class="fa fa-user-circle-o fa-lg ml-3 mt-2"></i>
-            <a [routerLink]="['/auth']"> LogIn</a>
+            <a [routerLink]="['/auth']">LogIn</a>
         </div>
     </div>
 

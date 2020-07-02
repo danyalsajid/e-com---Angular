@@ -1,4 +1,4 @@
 export interface CategoryData {
     category: string,
-    subCategories: string[],
+    subCategories?: string[],
 }
