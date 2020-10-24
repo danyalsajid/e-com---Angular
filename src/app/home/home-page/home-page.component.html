@@ -1,41 +1,52 @@
 <!-- Top Image -->
-<img
-    src="../../assets/electronics-banner-02.jpg"
-    class="img-fluid"
-    style="position: relative; top: -30px;"
->
+<div class="container-fluid bg-image d-flex align-items-center">
+    <div class="w-75">
+        <span
+            class="text-light text-align-right font-weight-bold"
+            style="font-size: 10vh;"
+        >
+            A place to buy Electronic Components
+        </span>
+    </div>
+
+</div>
 
 <br>
 <br>
 <br>
+
 <!-- Information Center -->
 <div class="bg-white p-5">
-    <h2>Information Center</h2>
-    <br>
-    <div class="container bg-light">
-        <img
-            src="../../assets/electronics-banner-02.jpg"
-            height="200px"
-            style="object-fit: contain; width: 100%;"
-        >
+
+    <div class="container">
+        <h2>Information Center</h2>
+        <br>
+        <div class="bg-light">
+            <img
+                src="../../assets/electronics-banner-02.jpg"
+                height="200px"
+                style="object-fit: contain; width: 100%;"
+            >
+        </div>
     </div>
 </div>
 
 <!-- New Arrivals -->
-<div class="new-irivals p-5">
-    <div class="d-flex justify-content-between">
-        <div class="d-flex justify-content-between">
-            <h2>New Arrivals</h2>
+<div class="p-5">
+
+    <div class="container">
+        <h2>New Arrivals</h2>
+        <br>
+        <div class="d-flex justify-content-start flex-wrap">
+
+            <app-product-card
+                *ngFor="let product of productData; let i=index"
+                [product]="product"
+                [productId]="productIds[i]"
+            >
+            </app-product-card>
+
         </div>
-    </div>
-    <br>
-    <div class="row px-5 pb-5">
-        <app-product-card
-            *ngFor="let product of productData; let i=index"
-            [product]="product"
-            [productId]="productIds[i]"
-        >
-        </app-product-card>
     </div>
 
 </div>

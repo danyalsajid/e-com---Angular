@@ -1,0 +1,9 @@
+
+.bg-image {
+    background-image: url("/assets/electronics-banner-02.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 530px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
